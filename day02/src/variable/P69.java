@@ -1,6 +1,5 @@
 package variable;
 
-import javax.imageio.event.IIOReadWarningListener;
 
 public class P69 {
 

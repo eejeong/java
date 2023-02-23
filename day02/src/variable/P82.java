@@ -1,6 +1,5 @@
 package variable;
 
-import java.awt.Stroke;
 
 public class P82 {
 

@@ -2,7 +2,6 @@ package variable;
 
 import java.util.Scanner;
 
-import com.sun.net.httpserver.Authenticator.Result;
 
 public class P81_v2 {
 

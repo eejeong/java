@@ -1,7 +1,6 @@
 package variable;
 
-import java.util.Random;
-import java.util.Scanner;
+
 
 public class P75 {
 
