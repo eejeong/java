@@ -1,5 +1,7 @@
 package whilecontrol;
 
+import javax.imageio.event.IIOReadWarningListener;
+
 public class P99 {
 
 	public static void main(String[] args) {
@@ -7,6 +9,7 @@ public class P99 {
 		int aa = 100;
 		int a = 20;
 		int bb = 200;
+		int c = 20;
 		for(int i=2;i<10;i++) {
 			System.out.printf("%d 단 \n",i);
 			for(int j=1;j<10;j++) {
