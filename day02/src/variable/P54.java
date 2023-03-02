@@ -1,21 +1,19 @@
 package variable;
 
-import java.lang.reflect.InaccessibleObjectException;
-
 public class P54 {
 
 	public static void main(String[] args) {
 		//boolean
-		boolean b1 = 10 > 5;
-		
+//		boolean b1 = 10 > 5;
+
 		// 정수
-		int n1 = 10;
-		long n2 = 0L;
-		n2 = 222222222222L;
+//		int n1 = 10;
+//		long n2 = 0L;
+//		n2 = 222222222222L;
 		
 		// 실수
-		double d1 = 1.0;
-		float f1 = 1.0F;
+//		double d1 = 1.0;
+//		float f1 = 1.0F;
 		
 		double d2 = 1/2;
 		System.out.println(d2);
