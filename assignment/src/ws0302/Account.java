@@ -7,7 +7,7 @@ public class Account {
 	private double rate;
 	private String grade;
 	public Account() {
-		this.accNum = MakrAccountNumber.makeAccNum();
+		this.accNum = MakeAccountNumber.makeAccNum();
 	}
 	
 	public Account(String accName, double balance, double rate, String grade) {

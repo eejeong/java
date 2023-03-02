@@ -3,7 +3,7 @@ package ws0302;
 import java.util.Calendar;
 import java.util.Random;
 
-public class MakrAccountNumber {
+public class MakeAccountNumber {
 	public static String makeAccNum() {
 		String accNum = "";
 		Random r = new Random();
