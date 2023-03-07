@@ -9,6 +9,16 @@ public class Account {
 	// Constructor - 음수 예외 상황
 	// 계좌 정보 조회
 	public Account() {
+		this.accNo = MakeAccountNumber.makeAccNo();
+	}
+	public Account(String name, String accHolder, double balance) throws negativeNumException  {
+		this();
+		if (balance <= 0) {
+			throw new negativeNumException("금액을 확인하세요.");
+		}
+		this.name = name;
+		this.accHolder = accHolder;
+		this.balance = balance;
 	}
 	public Account(String accNo, String name, String accHolder, double balance) throws negativeNumException {
 		if (balance <= 0) {

@@ -16,8 +16,6 @@ public class App {
 				break;
 			} else if (cmd.equals("c")) {
 				System.out.println("Create Account");
-				System.out.println("Input accNo:");
-				String accNo = sc.next();
 				System.out.println("Input Name:");
 				String name = sc.next();
 				System.out.println("Input accHolder:");
@@ -25,7 +23,7 @@ public class App {
 				System.out.println("Input Balance:");
 				double balance = Double.parseDouble(sc.next());
 				try {
-					acc = new Account(accNo, name, accHolder, balance);
+					acc = new Account(name, accHolder, balance);
 					System.out.println(acc);
 				} catch (negativeNumException e) {
 					System.out.println(e.getMessage());
