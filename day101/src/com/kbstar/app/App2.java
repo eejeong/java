@@ -68,11 +68,14 @@ public class App2 {
 				List<ItemDTO> list = null;
 				try {
 					list = itemDao.select();
-					for(ItemDTO u:list) {
-					System.out.println(u);
+					if(list.size() == 0) {
+						System.out.println("조회된 내용이 없습니다.");
+					} else if (list.size() != 0) {
+						for(ItemDTO u:list) {
+							System.out.println(u);}
 					}
 				} catch (Exception e) {
-					System.out.println("id가 존재하지 않습니다");
+					System.out.println("조회된 내용이 없습니다.");
 				}
 			}
 		
