@@ -8,9 +8,9 @@ import com.kbstar.service.UserService;
 
 import bank.MakeMessage;
 
-public abstract class App {
+public class App {
 
-	public abstract void main(String[] args) throws Exception; {
+	public static void main(String[] args) {
 		Service<String, UserDTO> service = new UserService();
 		Scanner sc = new Scanner(System.in);
 		while(true) {

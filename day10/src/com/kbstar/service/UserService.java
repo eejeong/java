@@ -44,4 +44,11 @@ public class UserService implements Service<String, UserDTO>{
 		}
 		System.out.println("Send mail..");
 	}
+
+	@Override
+	public void search() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 }
