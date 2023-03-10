@@ -18,8 +18,8 @@ public class Lotto {
 		public void makeWinningNumberMoney() {
 			Random r = new Random();
 			prizeMoney = r.nextInt(2000000000)+1;
-			while(winningNum.size() <3) {
-				int num = r.nextInt(25)+1;
+			while(winningNum.size() <6) {
+				int num = r.nextInt(45)+1;
 				winningNum.add(num);
 			}
 			System.out.printf("%4.0f\n",prizeMoney);
