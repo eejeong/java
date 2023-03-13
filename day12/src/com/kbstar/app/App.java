@@ -1,5 +1,6 @@
 package com.kbstar.app;
 
+import java.util.List;
 import java.util.Scanner;
 
 import com.kbstar.dto.AccountDTO;
@@ -8,6 +9,7 @@ import com.kbstar.dto.UserDTO;
 import com.kbstar.frame.BankService;
 import com.kbstar.service.BankServiceImpl;
 
+
 public class App {
 
 	public static void main(String[] args) {
@@ -15,7 +17,9 @@ public class App {
 		Scanner sc = new Scanner(System.in);
 		while (true) {
 			UserDTO user = null; // logout시 로그인 정보 초기화
-			System.out.println("Login(l) or Register(r) (q) ...");
+			// UserDTO 정의를 if 안에서 할 경우, 로그인 이후 메뉴에서 사용 불가. 
+			// while 바로 밑에 선언하면 while 문 안에서 자유롭게 사용 가능
+			System.out.println("Login (l) or Register (r) (q) ...");
 			String cmd = sc.next();
 			if (cmd.equals("q")) {
 				break;
@@ -27,8 +31,6 @@ public class App {
 				String email = sc.next();
 				String contact = sc.next();
 				user = new UserDTO(id, pwd, name, email, contact);
-				// UserDTO 정의를 if 안에서 할 경우, 로그인 이후 메뉴에서 사용 불가. while 바로 밑에 선언하면 while 문 안에서 자유롭게
-				// 사용 가능
 				try {
 					service.register(user);
 					System.out.println("환영합니다.");
@@ -65,6 +67,11 @@ public class App {
 							System.out.println("Transaction Completed...");
 						} else if (cmn.equals("a")) {
 							System.out.println("Select Account...");
+							List<AccountDTO> list = null;
+							list = service.getAllAccount(user.getId());
+							for(AccountDTO acc:list) {
+								System.out.println(acc);
+							}							
 						} else if (cmn.equals("i")) {
 							System.out.println("User Info...");
 							String rid = user.getId();
@@ -73,6 +80,12 @@ public class App {
 							System.out.println(ruser);
 						} else if (cmn.equals("tr")) {
 							System.out.println("Select Transaction...");
+							String accNo = sc.next();
+							List<TransactionDTO> list = null;
+							list = service.getAllTr(accNo);
+							for(TransactionDTO tr:list) {
+								System.out.println(tr);
+							}		
 						}
 					}
 				} catch (Exception e) {

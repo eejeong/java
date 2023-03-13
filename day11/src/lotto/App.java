@@ -29,10 +29,11 @@ public class App {
 					grade = lotto.checkRanking(nums);
 				} catch (Exception e) {
 					System.out.println(e.getMessage());
-					continue; // System.out.println("Input cmd..(q.s.c.p)"); 로 돌아감
+					continue; 
+					//System.out.println("Input cmd..(q.s.c.p)"); 로 돌아감
 				}
 				System.out.println(grade);
-			}else if(cmd.equals("p")) {
+			} else if(cmd.equals("p")) {
 				System.out.printf("총 당청금 %4.0f\n",lotto.getPrizeMoney());
 				System.out.printf("당신의 등수 %d\n",grade);
 				System.out.printf("당신의 당첨금 %4.0f\n",lotto.prizeMoney(grade));

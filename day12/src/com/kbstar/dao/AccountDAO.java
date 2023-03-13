@@ -34,18 +34,12 @@ public class AccountDAO implements DAO<String, AccountDTO>{
 	public AccountDTO select(String k) throws Exception {
 		AccountDTO obj = null;
 		obj = db.get(k);
+		if (obj == null) {
+			throw new Exception("존재하지 않는 계좌입니다.");
+		}
 		return obj;
 	}
 
-	@Override
-	public List<AccountDTO> select() throws Exception {
-		List<AccountDTO> list = new ArrayList<AccountDTO>();
-		Collection<AccountDTO> col = db.values();
-		for(AccountDTO obj: col) {
-			list.add(obj);
-		}
-		return list;
-	}
 	
 	// 사용자의 계좌 조회
 	// obj : 사용자의 id;
@@ -53,8 +47,22 @@ public class AccountDAO implements DAO<String, AccountDTO>{
 	
 	@Override
 	public List<AccountDTO> search(Object obj) throws Exception {
+		List<AccountDTO> list = new ArrayList<AccountDTO>();
+		Collection<AccountDTO> col = db.values();
+		for(AccountDTO acc:col) {
+			// 계좌 중에서 id가 obj와 같은 것들만 
+			if((acc.getHolder()).equals(obj)) {
+				list.add(acc);
+			}			
+		}
+		return list;
+	}
+
+	@Override
+	public List<AccountDTO> select() throws Exception {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
 }
