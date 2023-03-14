@@ -102,7 +102,7 @@ public class ItemDaoImpl implements DAO<String, String, Item> {
 			try (ResultSet rset = pstmt.executeQuery()) {
 				while (rset.next()) {
 					String db_id = rset.getString("id");
-					String db_name = rset.getString("name");
+					String db_name = rset.getString("name");  
 					int db_price = rset.getInt("price");
 					double db_rate = rset.getDouble("rate");
 					Date db_regdate = rset.getDate("regdate");
