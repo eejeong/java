@@ -128,7 +128,7 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 					list.add(cust);
 				}
 			} catch(Exception e) {
-				
+				throw e;
 			}
 		} catch(Exception e) {
 			throw e;  //  getConnection(); 오류 상황
