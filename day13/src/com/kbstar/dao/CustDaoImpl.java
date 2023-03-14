@@ -4,7 +4,9 @@ import java.io.FileInputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
 
@@ -92,14 +94,46 @@ public class CustDaoImpl implements DAO<String, String, Cust> {
 
 	@Override
 	public Cust select(String k) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		Cust cust = null;
+		try(Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectSq1)) {
+			pstmt.setString(1, k);
+			try(ResultSet rset = pstmt.executeQuery()) {
+				rset.next();
+				String id = rset.getString("id");
+				String pwd = rset.getString("pwd");
+				String name = rset.getString("name");
+				int age = rset.getInt("age");
+				cust = new Cust(id, pwd, name, age);
+			} catch (Exception e) {
+				throw e;
+			}
+		} catch (Exception e) {
+			throw e;
+		}
+		return cust;
 	}
 
 	@Override
 	public List<Cust> selectListAll() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cust> list = new ArrayList<Cust>();
+		try(Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.selectAllSq1);) {
+			try(ResultSet rset = pstmt.executeQuery();) {
+				while(rset.next()) {
+					Cust cust = null;
+					String id = rset.getString("id");
+					String pwd = rset.getString("pwd");
+					String name = rset.getString("name");
+					int age = rset.getInt("age");
+					cust = new Cust(id, pwd, name, age);
+					list.add(cust);
+				}
+			} catch(Exception e) {
+				
+			}
+		} catch(Exception e) {
+			throw e;  //  getConnection(); 오류 상황
+		}
+		return list;
 	}
 
 	@Override
