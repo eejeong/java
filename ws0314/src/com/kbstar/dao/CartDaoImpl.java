@@ -22,7 +22,7 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 			e.printStackTrace();
 			return;
 		}
-		System.out.println("Driver Loading 성공.");
+		//System.out.println("Driver Loading 성공.");
 	}
 
 	@Override
@@ -77,11 +77,11 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 			try(ResultSet rset = pstmt.executeQuery()) {
 				rset.next();
 				String id = rset.getString("id");
-			    String userId = rset.getString("user_id");
-			    String itemId = rset.getString("item_id");
+			    String user_Id = rset.getString("user_id");
+			    String item_Id = rset.getString("item_id");
 			    int cnt = rset.getInt("cnt");
 			    Date regdate = rset.getDate("regdate");
-			    cart = new Cart(id, userId, itemId, cnt, regdate);
+			    cart = new Cart(id, user_Id, item_Id, cnt, regdate);
 			} catch(Exception e) {
 				throw e;
 			}
@@ -98,11 +98,11 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 			try (ResultSet rset = pstmt.executeQuery()) {
 				while (rset.next()) {
 					String id = rset.getString("id");
-				    String userId = rset.getString("user_id");
-				    String itemId = rset.getString("item_id");
+				    String user_Id = rset.getString("user_id");
+				    String item_Id = rset.getString("item_id");
 				    int cnt = rset.getInt("cnt");
 				    Date regdate = rset.getDate("regdate");
-					cartList.add(new Cart(id, userId, itemId, cnt, regdate));
+					cartList.add(new Cart(id, user_Id, item_Id, cnt, regdate));
 				}
 				if (cartList.size() == 0) {
 					throw new Exception("DB 에러 : 리스트 미존재");
@@ -116,8 +116,26 @@ public class CartDaoImpl implements DAO<String, String, Cart>{
 
 	@Override
 	public List<Cart> search(String k) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		List<Cart> cartList = new ArrayList<>();
+		try (Connection con = getConnection(); PreparedStatement pstmt = con.prepareStatement(Sql.mycartSelectAllSql)) {
+			pstmt.setString(1, k);
+			try (ResultSet rset = pstmt.executeQuery()) {
+				while (rset.next()) {
+					String id = rset.getString("id");
+				    String user_Id = rset.getString("user_id");
+				    String item_Id = rset.getString("item_id");
+				    int cnt = rset.getInt("cnt");
+				    Date regdate = rset.getDate("regdate");
+					cartList.add(new Cart(id, user_Id, item_Id, cnt, regdate));
+				}
+				if (cartList.size() == 0) {
+					throw new Exception("DB 에러 : 리스트 미존재");
+				}
+			}
+		} catch (Exception e) {
+			throw new Exception("DB 에러 : 시스템 에러");
+		}
+		return cartList;
 	}
 
 }
