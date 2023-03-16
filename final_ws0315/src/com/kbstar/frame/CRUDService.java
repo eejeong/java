@@ -2,6 +2,8 @@ package com.kbstar.frame;
 
 import java.util.List;
 
+import com.kbstar.dto.TransactionDTO;
+
 public interface CRUDService<K,V> {
     //서비스 레이어 : 업무에 대한 기능 추가(필요하면 DB, sms/email part 별로 나눠짐)
     //보다 서비스 관련 함수명으로 변경 필요
@@ -10,4 +12,5 @@ public interface CRUDService<K,V> {
     public void modify(V v) throws Exception;
     public V get(K k) throws Exception;
     public List<V> getAll() throws Exception;
+	List<TransactionDTO> search(String k) throws Exception;
 }

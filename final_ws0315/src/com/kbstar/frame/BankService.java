@@ -17,4 +17,4 @@ public interface BankService<V1, V2, V3, K, P> {
 	public List<V2> getAllAccount(K k) throws Exception; // 내 계좌 조회
 	public List<V3> getAllTr(String acc) throws Exception; // 내 거래 내역 조회
 	public void transaction(String sendAcc, String receiveAcc, double balance, String desc) throws Exception;
-}
+	}

@@ -3,9 +3,11 @@ package com.kbstar.dao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.kbstar.dto.TransactionDTO;
 import com.kbstar.dto.UserDTO;
 import com.kbstar.frame.DAO;
 import com.kbstar.frame.Sql;
@@ -31,10 +33,10 @@ public class UserDaoImpl implements DAO<String, UserDTO> {
 			pstmt.setString(4, v.getEmail());
 			pstmt.setString(5, v.getContact());
 			int result = pstmt.executeUpdate();
-			if (result != 0) {
+			if (result == 0) {
 				throw new Exception("이미 존재하는 아이디입니다.");
 			}
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			throw e;
 		}
 	}
@@ -115,5 +117,11 @@ public class UserDaoImpl implements DAO<String, UserDTO> {
 			throw e;
 		}
 		return list;
+	}
+
+	@Override
+	public List<TransactionDTO> select() throws Exception {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
